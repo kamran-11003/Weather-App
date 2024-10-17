@@ -138,55 +138,35 @@ input {
     flex-direction: column;
     align-items: center;
 }
-
-.filters-widget {
-    margin: 10px 0 0 50px;
-    padding: 20px;
-    border-radius: 10px;
-    height: 180px;
-    background-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.filters-widget h3 {
-    margin-bottom: 15px;
-}
-
-.filters-widget .btn {
-    margin: 5px;
-    padding: 10px;
+/* Global Button Style */
+button {
     background-color: #4caf50; /* Button color */
     color: white; /* Text color */
     border: none;
-    border-radius: 5px;
+    padding: 10px 16px; /* Adjust padding to make buttons look consistent */
+    margin: 4px;
+    border-radius: 5px; /* Rounded corners */
     cursor: pointer;
+    font-size: 16px; /* Consistent font size */
     transition: background-color 0.3s;
 }
 
-.filters-widget .btn:hover {
+button:hover {
     background-color: #45a049; /* Hover color */
 }
 
-#filterResults {
-    margin-top: 15px;
-    padding: 10px;
-    border-radius: 5px;
-    color: white;
-    border: 1px solid #ccc;
-    background-color: rgba(255, 255, 255, 0);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    max-height: 100px;
-    overflow-y: auto;
+button:disabled {
+    background-color: #ccc; /* Disabled background color */
+    color: #666; /* Disabled text color */
+    cursor: not-allowed; /* Disabled cursor */
+    opacity: 0.6; /* Slight transparency */
 }
 
-#filterResults div {
-    border-bottom: 1px solid #e0e0e0;
-    padding: 5px 0;
+/* Additional specific styles for table navigation buttons, if needed */
+.pagination .btn {
+    padding: 10px 16px; /* Ensure padding is consistent with other buttons */
 }
 
-#filterResults div:last-child {
-    border-bottom: none;
-}
 
 strong {
     display: block;
@@ -310,12 +290,7 @@ input {
         padding: 10px;
     }
 
-    .filters-widget {
-        margin: 20px 0 10px 50px;
-        width: 80%;
-        padding: 10px;
-        height: 25%;
-    }
+   
     .content-row {
         margin: 20px 0 10px 50px;
         width: 78%;    }
@@ -379,15 +354,6 @@ input {
         padding: 10px;
         font-size: 14px; /* Reduced font size */
     }
-
-    .filters-widget {
-        margin: 20px 0 10px;
-        width: 100%;
-        padding: 10px;
-        height: 25%;
-        font-size: 14px; /* Reduced font size */
-    }
-
     .content-row {
         margin: 20px 0 10px;
         width: 100%;
