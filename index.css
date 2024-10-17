@@ -1,0 +1,396 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.side-menu {
+    background-color: rgba(255, 255, 255, 0.4); 
+    width: 100px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+    margin: 20px 0 20px 10px; 
+}
+
+.side-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.side-menu a.active {
+    font-weight: bold; 
+    background-color: rgba(255, 255, 255, 0.6); 
+    border-radius: 5px; 
+    padding: 10px; 
+}
+
+.side-menu a:hover {
+    text-decoration: underline;
+}
+
+.side-menu img {
+    width: 100px;
+    margin-bottom: 30px;
+    border-radius: 10px; 
+}
+
+.main-content {
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 20px 0 10px 50px;
+    width: 800px;
+}
+
+.weather-widget {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0 0 50px;
+    width: 780px;
+    height: 100px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.5s;
+}
+
+.weather-icon img {
+    width: 200px;
+    height: 200px;
+}
+
+.clear-sky { background-image: url('./clear sky.jpg'); }
+.rain { background-image: url('./rain.jpg'); }
+.thunderstorm { background-image: url('./thunderstrom.jpg'); }
+.snow { background-image: url('./snow.jpg'); }
+.mist { background-image: url('./mist.jpg'); }
+
+
+.forecast-container {
+    margin: 30px 0 0 50px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#forecastTable, #forecast-Table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+    color: white;
+}
+
+#forecastTable th, #forecastTable td, #forecast-Table th, #forecast-Table td {
+    padding: 12px;
+    border-bottom: 1px solid #444;
+}
+
+.pagination {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination .btn {
+    background-color: #4caf50; /* Button color */
+    color: white; /* Text color */
+    border: none;
+    padding: 8px 16px;
+    margin: 4px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagination .btn:hover {
+    background-color: #45a049; /* Hover color */
+}
+
+.forecast-entry {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filters-widget {
+    margin: 10px 0 0 50px;
+    padding: 20px;
+    border-radius: 10px;
+    height: 180px;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.filters-widget h3 {
+    margin-bottom: 15px;
+}
+
+.filters-widget .btn {
+    margin: 5px;
+    padding: 10px;
+    background-color: #4caf50; /* Button color */
+    color: white; /* Text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filters-widget .btn:hover {
+    background-color: #45a049; /* Hover color */
+}
+
+#filterResults {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+#filterResults div {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 5px 0;
+}
+
+#filterResults div:last-child {
+    border-bottom: none;
+}
+
+strong {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #4caf50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.content-row {
+    margin: 70px 20px 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.pagination .btn:disabled {
+    background-color: #ccc; /* Grey background */
+    color: #666; /* Darker text color */
+    cursor: not-allowed; /* Change cursor */
+    opacity: 0.6; /* Slight transparency */
+}
+
+/* Responsive Styles: Transform Sidebar to Top Nav Bar */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        min-height: 150vh;
+    }
+
+    .side-menu {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.4);
+        margin: 0;
+        border-radius: 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .side-menu img {
+        margin-top: 10px;
+    }
+
+    .side-menu a {
+        margin: 0 15px;
+        font-size: 16px;
+    }
+
+    .side-menu a.active {
+        padding: 5px 10px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+    
+input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 20px 0 10px 50px;
+    width: 80%;
+}
+    .weather-widget {
+        margin: 20px 0 10px 50px;
+        width: 80%;
+        padding: 10px;
+    }
+
+    .forecast-container {
+        margin: 20px 0 10px 50px;
+        width: 80%;
+        padding: 10px;
+    }
+
+    .filters-widget {
+        margin: 20px 0 10px 50px;
+        width: 80%;
+        padding: 10px;
+        height: 25%;
+    }
+    .content-row {
+        margin: 20px 0 10px 50px;
+        width: 78%;    }
+}
+/* Responsive Styles: Transform Sidebar to mobile */ 
+@media (max-width: 414px) {
+    body {
+        flex-direction: column;
+        min-height: 150vh;
+    }
+
+    .side-menu {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.4);
+        margin: 0;
+        border-radius: 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .side-menu img {
+        margin-top: 10px;
+    }
+
+    .side-menu a {
+        margin: 0 15px;
+        font-size: 14px; /* Reduced font size */
+    }
+
+    .side-menu a.active {
+        padding: 5px 10px;
+        font-size: 14px; /* Reduced font size */
+    }
+
+    .main-content {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    input {
+        padding: 8px; /* Slightly smaller padding */
+        font-size: 14px; /* Reduced font size */
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin: 20px 0 10px;
+        width: 100%;
+    }
+
+    .weather-widget {
+        margin: 20px 0 10px;
+        width: 100%;
+        padding: 10px;
+        font-size: 14px; /* Reduced font size */
+    }
+
+    .forecast-container {
+        margin: 20px 0 10px;
+        width: 100%;
+        padding: 10px;
+        font-size: 14px; /* Reduced font size */
+    }
+
+    .filters-widget {
+        margin: 20px 0 10px;
+        width: 100%;
+        padding: 10px;
+        height: 25%;
+        font-size: 14px; /* Reduced font size */
+    }
+
+    .content-row {
+        margin: 20px 0 10px;
+        width: 100%;
+        font-size: 14px; /* Reduced font size */
+    }
+}

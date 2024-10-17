@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <Nav class="side-menu">
+        <img src="./logo.png" alt="Weather App Logo">
+        <a href="./Dashboard.html" class="active">Dashboard</a>
+        <a href="./Charts.html">Charts</a>
+        <a href="./Chatbot.html">Ai</a>
+    </Nav>
+
+    <div class="main-content">
+        <input type="text" id="cityInput" placeholder="Enter city name">
+        <div style="margin-left: 50px; margin-top: 20px;">
+            <label class="switch">
+                <input type="checkbox" id="unitToggle">
+                <span class="slider round"></span>
+            </label>
+            <span id="toggleLabel">Switch to Imperial (°F)</span>
+        </div>
+
+        <div class="container">
+            <div id="weatherWidget" class="weather-widget">
+                <div class="weather-info">
+                    <h2 id="cityName">City</h2>
+                    <p id="temperature">Temperature: --</p>
+                    <p id="weatherCondition">Condition: --</p>
+                </div>
+                <div class="weather-icon">
+                    <img id="weatherIcon" src="" alt="Weather Icon">
+                </div>
+            </div>
+            <div class="forecast-container">
+                <table id="forecastTable">
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div class="filters-widget">
+                <div>
+                    <button class="btn" id="ascTempBtn">Show Temperatures Ascending</button>
+                    <button class="btn" id="rainDaysBtn">Show Rainy Days</button>
+                    <button class="btn" id="highestTempBtn">Highest Temperature</button>
+                    <button class="btn" id="descTempBtn">Show Temperatures Descending</button>
+                </div>
+                <div id="filterResults"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-content">
+        <div class="content-row">
+            <table id="forecast-Table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Temperature</th>
+                        <th>Weather Condition</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div class="pagination">
+                <button class="btn" id="prevPageBtn" onclick="changePage(-1)" disabled>Previous</button>
+                <span>Page <span id="pageNumber">1</span></span>
+                <button class="btn" id="nextPageBtn" onclick="changePage(1)">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
