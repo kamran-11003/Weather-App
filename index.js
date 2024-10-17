@@ -105,12 +105,33 @@ if (weatherMain.includes('clear')) {
 let TodaysData = [];
 let currentPage = 1;
 const entriesPerPage = 6;
-let Forcast = []; 
-function displayNextFiveDaysForecast() {
+let Forcast = []; // Event listeners for sorting and filtering buttons
+document.getElementById('ascendingBtn').addEventListener('click', () => {
+    const sortedAscending = [...Forcast].sort((a, b) => a.main.temp - b.main.temp);
+    displayNextFiveDaysForecast(sortedAscending);
+});
+
+document.getElementById('descendingBtn').addEventListener('click', () => {
+    const sortedDescending = [...Forcast].sort((a, b) => b.main.temp - a.main.temp);
+    displayNextFiveDaysForecast(sortedDescending);
+});
+
+document.getElementById('rainyDaysBtn').addEventListener('click', () => {
+    const rainyDays = Forcast.filter(entry => entry.weather[0].description.includes('rain'));
+    displayNextFiveDaysForecast(rainyDays);
+});
+
+document.getElementById('highestTempBtn').addEventListener('click', () => {
+    const highestTempDay = Forcast.reduce((max, entry) => (entry.main.temp > max.main.temp ? entry : max), Forcast[0]);
+    displayNextFiveDaysForecast([highestTempDay]);
+});
+
+function displayNextFiveDaysForecast(Forcast) {
     const tableBody = document.querySelector('#forecast-Table tbody');
-    tableBody.innerHTML = '';
+    tableBody.innerHTML = ''; 
     const startIndex = (currentPage - 1) * entriesPerPage;
     const endIndex = Math.min(startIndex + entriesPerPage, Forcast.length);
+
     for (let i = startIndex; i < endIndex; i++) {
         const forecast = Forcast[i];
         const dateTime = new Date(forecast.dt_txt);
@@ -124,13 +145,15 @@ function displayNextFiveDaysForecast() {
         `;
         tableBody.insertAdjacentHTML('beforeend', row);
     }
+
     document.getElementById('pageNumber').textContent = currentPage;
     document.getElementById('prevPageBtn').disabled = currentPage === 1;
-    document.getElementById('nextPageBtn').disabled = endIndex >= forecastData.length;
+    document.getElementById('nextPageBtn').disabled = endIndex >= Forcast.length;
 }
+
 function changePage(direction) {
     currentPage += direction;
-    displayNextFiveDaysForecast();
+    displayNextFiveDaysForecast(Forcast);
 }
 function getForecast(lat, lon) {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${metric}`)
@@ -160,7 +183,7 @@ function getForecast(lat, lon) {
                 }));
                 
             displayForecast();
-            displayNextFiveDaysForecast(); 
+            displayNextFiveDaysForecast(Forcast); 
         })
         .catch(error => console.error('Error fetching weather forecast:', error));
 }
@@ -224,75 +247,3 @@ function previousPage() {
         displayForecast();
     }
 }
-document.getElementById('ascTempBtn').addEventListener('click', () => {
-    const sortedTemperatures = [...Forcast].sort((a, b) => a.main.temp - b.main.temp);
-    displayFilterResults('Temperatures in Ascending Order', sortedTemperatures);
-});
-document.getElementById('rainDaysBtn').addEventListener('click', () => {
-    const rainyDays = Forcast.filter(entry => entry.weather[0].description.includes('rain'));
-    displayFilterResultsDays('Days with Rain', rainyDays);
-});
-document.getElementById('highestTempBtn').addEventListener('click', () => {
-    const highestTempEntry = Forcast.reduce((max, entry) => (entry.main.temp > max.main.temp ? entry : max));
-    displayFilterResults('Day with Highest Temperature', [highestTempEntry]);
-});
-document.getElementById('descTempBtn').addEventListener('click', () => {
-    const sortedTemperaturesDesc = [...Forcast].sort((a, b) => b.main.temp - a.main.temp);
-    displayFilterResults('Temperatures in Descending Order', sortedTemperaturesDesc);
-});
-function displayFilterResults(title, data) {
-    const resultsDiv = document.getElementById('filterResults');
-    resultsDiv.innerHTML = `<strong>${title}:</strong><br>`;
-
-    if (data.length === 0) {
-        resultsDiv.innerHTML += 'No results found.';
-        return;
-    }
-    data.forEach(entry => {
-        const dateTime = new Date(entry.dt_txt);
-        resultsDiv.innerHTML += `
-    <div>
-        ${dateTime.toLocaleDateString()} - ${dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}:
-        ${entry.main.temp}${unit}, Condition: ${entry.weather[0].description}
-    </div>
-`;
-    });
-}
-function displayFilterResultsDays(title, data) {
-    const resultsDiv = document.getElementById('filterResults');
-    resultsDiv.innerHTML = `<strong>${title}:</strong><br>`;
-
-    if (data.length === 0) {
-        resultsDiv.innerHTML += 'No results found.';
-        return;
-    }
-
-    const groupedData = data.reduce((acc, entry) => {
-        const date = new Date(entry.dt_txt).toLocaleDateString();
-        if (!acc[date]) {
-            acc[date] = {
-                temperatures: [],
-                condition: entry.weather[0].description
-            };
-        }
-        acc[date].temperatures.push(entry.main.temp);
-        return acc;
-    }, {});
-    for (const date in groupedData) {
-        const highestTemp = Math.max(...groupedData[date].temperatures);
-        const condition = groupedData[date].condition;
-
-        resultsDiv.innerHTML += `
-    <div>
-        ${date}: Highest Temperature: ${highestTemp.toFixed(2)}${unit}, Condition: ${condition}
-    </div>
-`;
-    }
-}
-const currPage = window.location.pathname.split("/").pop();
-
-document.querySelectorAll('.side-menu a').forEach(link => {
-    if (link.getAttribute('href') === currPage) {
-        link.classList.add('active');
-    }
-});
