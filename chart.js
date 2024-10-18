@@ -1,10 +1,11 @@
 const apiKey = '510cdad4e9ea464099bb54abe789102e';
-let barChart, doughnutChart, lineChart; 
+let barChart, doughnutChart, lineChart;
+
 window.onload = function() {
-    let backgroundColor=sessionStorage.getItem('background');
-document.body.classList.add(backgroundColor);
+    let backgroundColor = sessionStorage.getItem('background');
+    document.body.classList.add(backgroundColor);
     console.log(backgroundColor);
-    getForecast(); 
+    getForecast();
 };
 
 function clearCanvases() {
@@ -16,6 +17,7 @@ function clearCanvases() {
     doughnutCtx.clearRect(0, 0, doughnutCtx.canvas.width, doughnutCtx.canvas.height);
     lineCtx.clearRect(0, 0, lineCtx.canvas.width, lineCtx.canvas.height);
 }
+
 function getForecast() {
     const data = sessionStorage.getItem('forecastData');
     
@@ -60,7 +62,6 @@ function getForecast() {
     renderCharts(temperatures, weatherPercentages, dates);
 }
 
-
 function renderCharts(temperatures, weatherPercentages, dates) {
     clearCanvases(); 
     const barCtx = document.getElementById('barChart').getContext('2d');
@@ -77,6 +78,8 @@ function renderCharts(temperatures, weatherPercentages, dates) {
             }]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false, // Allow the chart to fill the canvas area
             animation: { duration: 2000 },
             scales: {
                 y: {
@@ -121,7 +124,11 @@ function renderCharts(temperatures, weatherPercentages, dates) {
                 borderWidth: 1
             }]
         },
-        options: { animation: { duration: 2000 } }
+        options: { 
+            responsive: true,
+            maintainAspectRatio: false, // Allow the chart to fill the canvas area
+            animation: { duration: 2000 } 
+        }
     });
 
     const lineCtx = document.getElementById('lineChart').getContext('2d');
@@ -138,6 +145,8 @@ function renderCharts(temperatures, weatherPercentages, dates) {
             }]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false, // Allow the chart to fill the canvas area
             animation: { duration: 2000 },
             scales: {
                 y: {
@@ -157,9 +166,10 @@ function renderCharts(temperatures, weatherPercentages, dates) {
         }
     });
 }
-const hamburgerMenu = document.getElementById('hamburgerMenu');
-        const sideMenu = document.getElementById('sideMenu');
 
-        hamburgerMenu.addEventListener('click', () => {
-            sideMenu.classList.toggle('active');
-        });
+const hamburgerMenu = document.getElementById('hamburgerMenu');
+const sideMenu = document.getElementById('sideMenu');
+
+hamburgerMenu.addEventListener('click', () => {
+    sideMenu.classList.toggle('active');
+});

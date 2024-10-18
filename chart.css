@@ -23,43 +23,41 @@ body {
 
 .charts {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap */
-    justify-content: center; /* Center align charts */
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .chart-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     margin-top: 25px;
-    flex-wrap: wrap;
-    flex: 1 1 300px; /* Allow flex items to grow and shrink, with a base size of 300px */
-    max-width: 400px; /* Limit the maximum width */
-    margin: 15px; /* Margin for spacing */
+    flex: 1 1 300px;
+    max-width: 400px;
+    margin: 15px;
 }
 
 canvas {
-    width: 400px !important;
-    height: 300px !important;
+    width: 100% !important; /* Ensure the canvas fills the container */
+    height: 300px !important; /* Fixed height for canvas */
     background-color: rgba(255, 255, 255, 0.95);
     border: 1px solid #111112;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     margin: 20px;
-    max-width: 100%;
 }
 
 .side-menu {
-    background-color: rgba(255, 255, 255, 0.4); 
+    background-color: rgba(255, 255, 255, 0.4);
     width: 100px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: white;
-    border-radius: 10px; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
-    margin: 20px 0 20px 10px; 
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin: 20px 0 20px 10px;
 }
 
 .side-menu a {
@@ -70,10 +68,10 @@ canvas {
 }
 
 .side-menu a.active {
-    font-weight: bold; 
-    background-color: rgba(255, 255, 255, 0.6); 
-    border-radius: 5px; 
-    padding: 10px; 
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .side-menu a:hover {
@@ -83,16 +81,19 @@ canvas {
 .side-menu img {
     width: 100px;
     margin-bottom: 30px;
-    border-radius: 10px; 
+    border-radius: 10px;
 }
-h1{
+
+h1 {
     color: white;
 }
+
 .clear-sky { background-image: url('./clear sky.jpg'); }
 .rain { background-image: url('./rain.jpg'); }
 .thunderstorm { background-image: url('./thunderstrom.jpg'); }
 .snow { background-image: url('./snow.jpg'); }
 .mist { background-image: url('./mist.jpg'); }
+
 @media (max-width: 768px) {
     .side-menu {
         transform: translateX(-120%);
@@ -100,11 +101,11 @@ h1{
         z-index: 1000;
         background-color: rgba(88, 86, 86, 0.8);
     }
+
     .main-content {
         width: 90%;
         margin-top: 80px;
         padding: 10px;
-       
     }
 
     .chart-container {
@@ -114,9 +115,7 @@ h1{
     }
 
     canvas {
-        width: 100% !important; 
-        height: 350px !important; 
-        max-width: 350px; 
+        height: 250px !important; /* Adjust height for mobile */
     }
 }
 
@@ -136,13 +135,15 @@ h1{
         display: block;
     }
 }
+
 .side-menu.active {
     margin-top: 80px;
     transform: translateX(0);
 }
+
 @media (max-width: 768px) {
     .chart-container {
-        flex-basis: 100%; /* Make each chart take full width on smaller screens */
-        max-width: 100%; /* Ensure full width */
+        flex-basis: 100%;
+        max-width: 100%;
     }
 }
