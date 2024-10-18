@@ -21,22 +21,32 @@ body {
     margin: 20px;
 }
 
+.charts {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap */
+    justify-content: center; /* Center align charts */
+}
+
 .chart-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-top: 25px;
     flex-wrap: wrap;
+    flex: 1 1 300px; /* Allow flex items to grow and shrink, with a base size of 300px */
+    max-width: 400px; /* Limit the maximum width */
+    margin: 15px; /* Margin for spacing */
 }
 
 canvas {
-    width: 350px !important;
-    height: 350px !important;
+    width: 400px !important;
+    height: 300px !important;
     background-color: rgba(255, 255, 255, 0.95);
     border: 1px solid #111112;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     margin: 20px;
+    max-width: 100%;
 }
 
 .side-menu {
@@ -129,4 +139,10 @@ h1{
 .side-menu.active {
     margin-top: 80px;
     transform: translateX(0);
+}
+@media (max-width: 768px) {
+    .chart-container {
+        flex-basis: 100%; /* Make each chart take full width on smaller screens */
+        max-width: 100%; /* Ensure full width */
+    }
 }
