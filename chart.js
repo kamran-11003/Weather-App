@@ -157,3 +157,9 @@ function renderCharts(temperatures, weatherPercentages, dates) {
         }
     });
 }
+const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const sideMenu = document.getElementById('sideMenu');
+
+        hamburgerMenu.addEventListener('click', () => {
+            sideMenu.classList.toggle('active');
+        });

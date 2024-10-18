@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>  
 <html lang="en">
 
 <head>
@@ -10,14 +10,19 @@
 </head>
 
 <body>
-    <div class="side-menu">
+    <div class="hamburger-menu" id="hamburgerMenu">
+        &#9776;
+    </div>
+
+    <Nav class="side-menu" id="sideMenu">
         <img src="./logo.png" alt="Weather App Logo">
         <a href="./Dashboard.html">Dashboard</a>
         <a href="./Charts.html" class="active">Charts</a>
         <a href="./Chatbot.html">Ai</a>
-    </div>
+    </Nav>
 
     <div class="main-content">
+        <h1>Charts</h1>
         <div class="chart-container">
             <canvas id="barChart"></canvas>
             <canvas id="doughnutChart"></canvas>
@@ -27,6 +32,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="chart.js"></script>
+        
 </body>
 
 </html>

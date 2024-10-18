@@ -105,7 +105,7 @@ if (weatherMain.includes('clear')) {
 let TodaysData = [];
 let currentPage = 1;
 const entriesPerPage = 6;
-let Forcast = []; // Event listeners for sorting and filtering buttons
+let Forcast = []; 
 document.getElementById('ascendingBtn').addEventListener('click', () => {
     const sortedAscending = [...Forcast].sort((a, b) => a.main.temp - b.main.temp);
     displayNextFiveDaysForecast(sortedAscending);
@@ -247,3 +247,10 @@ function previousPage() {
         displayForecast();
     }
 }
+// JavaScript to toggle the side menu on hamburger click
+const hamburgerMenu = document.getElementById('hamburgerMenu');
+const sideMenu = document.getElementById('sideMenu');
+
+hamburgerMenu.addEventListener('click', () => {
+    sideMenu.classList.toggle('active');
+});

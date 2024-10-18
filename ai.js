@@ -59,3 +59,9 @@ async function sendMessageToGemini(message) {
         return 'Sorry, there was an error.';
     }
 }
+const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const sideMenu = document.getElementById('sideMenu');
+
+        hamburgerMenu.addEventListener('click', () => {
+            sideMenu.classList.toggle('active');
+        });

@@ -8,43 +8,6 @@ body {
     background-repeat: no-repeat;
 }
 
-.side-menu {
-    background-color: rgba(255, 255, 255, 0.4);
-    width: 100px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    margin: 20px 0 20px 10px;
-}
-
-.side-menu a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    margin-bottom: 15px;
-}
-
-.side-menu a.active {
-    font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 5px;
-    padding: 10px;
-}
-
-.side-menu a:hover {
-    text-decoration: underline;
-}
-
-.side-menu img {
-    width: 100px;
-    margin-bottom: 30px;
-    border-radius: 10px;
-}
-
 .main-content {
     flex-grow: 1;
     display: flex;
@@ -56,11 +19,6 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     margin: 20px;
-}
-
-.container {
-    text-align: center;
-    margin-top: 20px;
 }
 
 .chart-container {
@@ -81,89 +39,93 @@ canvas {
     margin: 20px;
 }
 
-.chartjs-render-monitor {
+.side-menu {
+    background-color: rgba(255, 255, 255, 0.4); 
+    width: 100px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+    margin: 20px 0 20px 10px; 
+}
+
+.side-menu a {
+    color: white;
+    text-decoration: none;
     font-size: 18px;
-    color: #111;
-}
-
-.chartjs-tooltip {
-    font-size: 32px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
-}
-
-.chart-title {
-    font-size: 26px !important;
-    font-weight: bold;
-    color: #111;
-    text-align: center;
     margin-bottom: 15px;
 }
 
-/* Responsive Styles */
+.side-menu a.active {
+    font-weight: bold; 
+    background-color: rgba(255, 255, 255, 0.6); 
+    border-radius: 5px; 
+    padding: 10px; 
+}
+
+.side-menu a:hover {
+    text-decoration: underline;
+}
+
+.side-menu img {
+    width: 100px;
+    margin-bottom: 30px;
+    border-radius: 10px; 
+}
+h1{
+    color: white;
+}
+.clear-sky { background-image: url('./clear sky.jpg'); }
+.rain { background-image: url('./rain.jpg'); }
+.thunderstorm { background-image: url('./thunderstrom.jpg'); }
+.snow { background-image: url('./snow.jpg'); }
+.mist { background-image: url('./mist.jpg'); }
 @media (max-width: 768px) {
-    body {
-        flex-direction: column;
-        min-height: 100vh;
-    }
-
     .side-menu {
-        width: 100%;
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 10px;
+        transform: translateX(-120%);
+        position: absolute;
+        z-index: 1000;
+        background-color: rgba(255, 255, 255,0.4); 
     }
-
-    .side-menu img {
-        width: 80px; /* Smaller logo for mobile */
-        margin-bottom: 10px;
-    }
-
-    .side-menu a {
-        margin: 0 5px;
-        font-size: 14px; /* Reduced font size */
-    }
-
     .main-content {
-        width: 96%;
-        margin-top: 20px;
+        width: 90%;
+        margin-top: 80px;
         padding: 10px;
+       
     }
 
     .chart-container {
         flex-direction: column;
         align-items: center;
+        margin-right: 40px;
     }
 
     canvas {
-        width: 100% !important; /* Responsive canvas width */
-        height: auto !important; /* Responsive canvas height */
-        max-width: 350px; /* Limit max width */
+        width: 100% !important; 
+        height: 350px !important; 
+        max-width: 350px; 
     }
 }
 
-/* Weather Background Styles */
-.clear-sky {
-    background-image: url('./clear sky.jpg');
-    position: relative;
+.hamburger-menu {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
-.rain {
-    background-image: url('./rain.jpg');
-    position: relative;
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
 }
-
-.thunderstorm {
-    background-image: url('./thunderstrom.jpg');
-    position: relative;
-}
-
-.snow {
-    background-image: url('./snow.jpg');
-    position: relative;
-}
-
-.mist {
-    background-image: url('./mist.jpg');
-    position: relative;
+.side-menu.active {
+    transform: translateX(0);
 }

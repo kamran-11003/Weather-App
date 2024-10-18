@@ -9,16 +9,16 @@ body {
 }
 
 .side-menu {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.4); 
     width: 100px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    margin: 20px 0 20px 10px;
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+    margin: 20px 0 20px 10px; 
 }
 
 .side-menu a {
@@ -29,10 +29,10 @@ body {
 }
 
 .side-menu a.active {
-    font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 5px;
-    padding: 10px;
+    font-weight: bold; 
+    background-color: rgba(255, 255, 255, 0.6); 
+    border-radius: 5px; 
+    padding: 10px; 
 }
 
 .side-menu a:hover {
@@ -42,28 +42,14 @@ body {
 .side-menu img {
     width: 100px;
     margin-bottom: 30px;
-    border-radius: 10px;
+    border-radius: 10px; 
 }
+.clear-sky { background-image: url('./clear sky.jpg'); }
+.rain { background-image: url('./rain.jpg'); }
+.thunderstorm { background-image: url('./thunderstrom.jpg'); }
+.snow { background-image: url('./snow.jpg'); }
+.mist { background-image: url('./mist.jpg'); }
 
-.clear-sky {
-    background-image: url('./clear sky.jpg');
-}
-
-.rain {
-    background-image: url('./rain.jpg');
-}
-
-.thunderstorm {
-    background-image: url('./thunderstrom.jpg'); /* Correct spelling */
-}
-
-.snow {
-    background-image: url('./snow.jpg');
-}
-
-.mist {
-    background-image: url('./mist.jpg');
-}
 
 .main-content {
     display: flex;
@@ -140,32 +126,14 @@ body {
     background-color: #0056b3;
 }
 
-/* Responsive Styles */
+
 @media (max-width: 768px) {
-    body {
-        flex-direction: column;
-        min-height: 100vh;
-    }
-
     .side-menu {
-        width: 100%;
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 10px;
-        margin:0 0 0 0
-        }
-
-    .side-menu img {
-        width: 80px; /* Smaller logo for mobile */
-        margin-bottom: 10px;
-        margin-top: 0px;
+        transform: translateX(-120%);
+        position: absolute;
+        z-index: 1000;
+        background-color: rgba(255, 255, 255,0.4); 
     }
-
-    .side-menu a {
-        margin: 0 5px;
-        font-size: 14px; /* Reduced font size */
-    }
-
     .main-content {
         width: 100%;
         height:80%;
@@ -176,6 +144,30 @@ body {
         height:80%;
     }
 
-   
 }
 
+.hamburger-menu {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+}
+.side-menu.active {
+    margin-top: 80px;
+    transform: translateX(0);
+}
+
+
+h1{
+    color: white;
+}

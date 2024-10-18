@@ -127,8 +127,8 @@ input {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    padding: 10px 16px;
 }
-
 .pagination .btn:hover {
     background-color: #45a049; /* Hover color */
 }
@@ -138,7 +138,6 @@ input {
     flex-direction: column;
     align-items: center;
 }
-/* Global Button Style */
 button {
     background-color: #4caf50; /* Button color */
     color: white; /* Text color */
@@ -161,12 +160,6 @@ button:disabled {
     cursor: not-allowed; /* Disabled cursor */
     opacity: 0.6; /* Slight transparency */
 }
-
-/* Additional specific styles for table navigation buttons, if needed */
-.pagination .btn {
-    padding: 10px 16px; /* Ensure padding is consistent with other buttons */
-}
-
 
 strong {
     display: block;
@@ -228,116 +221,29 @@ input:checked + .slider:before {
     text-align: center;
 }
 .pagination .btn:disabled {
-    background-color: #ccc; /* Grey background */
-    color: #666; /* Darker text color */
-    cursor: not-allowed; /* Change cursor */
-    opacity: 0.6; /* Slight transparency */
+    background-color: #ccc; 
+    color: #666; 
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
-/* Responsive Styles: Transform Sidebar to Top Nav Bar */
 @media (max-width: 768px) {
-    body {
-        flex-direction: column;
-        min-height: 150vh;
-    }
-
     .side-menu {
-        flex-direction: row;
-        justify-content: space-around;
-        width: 100%;
-        padding: 10px;
-        background-color: rgba(255, 255, 255, 0.4);
-        margin: 0;
-        border-radius: 0;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transform: translateX(-120%);
+        position: absolute;
+        z-index: 1000;
+        background-color: rgba(255, 255, 255,0.4); 
     }
-
-    .side-menu img {
-        margin-top: 10px;
-    }
-
-    .side-menu a {
-        margin: 0 15px;
-        font-size: 16px;
-    }
-
-    .side-menu a.active {
-        padding: 5px 10px;
-    }
-
-    .main-content {
-        margin-left: 0;
-        margin-top: 20px;
-    }
-    
-input {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin: 20px 0 10px 50px;
-    width: 80%;
-}
-    .weather-widget {
-        margin: 20px 0 10px 50px;
-        width: 80%;
-        padding: 10px;
-    }
-
-    .forecast-container {
-        margin: 20px 0 10px 50px;
-        width: 80%;
-        padding: 10px;
-    }
-
-   
-    .content-row {
-        margin: 20px 0 10px 50px;
-        width: 78%;    }
-}
-/* Responsive Styles: Transform Sidebar to mobile */ 
-@media (max-width: 414px) {
-    body {
+    body{
         flex-direction: column;
-        min-height: 150vh;
+        min-height: 200vh;
     }
-
-    .side-menu {
-        flex-direction: row;
-        justify-content: space-around;
-        width: 100%;
-        padding: 10px;
-        background-color: rgba(255, 255, 255, 0.4);
-        margin: 0;
-        border-radius: 0;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .side-menu img {
-        margin-top: 10px;
-    }
-
-    .side-menu a {
-        margin: 0 15px;
-        font-size: 14px; /* Reduced font size */
-    }
-
-    .side-menu a.active {
-        padding: 5px 10px;
-        font-size: 14px; /* Reduced font size */
-    }
-
-    .main-content {
-        margin-left: 0;
-        margin-top: 20px;
-    }
-
     input {
-        padding: 8px; /* Slightly smaller padding */
-        font-size: 14px; /* Reduced font size */
+        padding: 8px;
+        font-size: 14px; 
         border-radius: 5px;
         border: 1px solid #ccc;
-        margin: 20px 0 10px;
+        margin: 80px 0 10px;
         width: 100%;
     }
 
@@ -345,18 +251,49 @@ input {
         margin: 20px 0 10px;
         width: 100%;
         padding: 10px;
-        font-size: 14px; /* Reduced font size */
+        font-size: 14px;
     }
 
     .forecast-container {
         margin: 20px 0 10px;
         width: 100%;
         padding: 10px;
-        font-size: 14px; /* Reduced font size */
+        font-size: 14px; 
     }
+        
+    #forecastTable, #forecast-Table {
+        width: 100%;
+        margin-top: 10px;
+        border-collapse: collapse;
+        color: white;
+    }
+
     .content-row {
         margin: 20px 0 10px;
         width: 100%;
-        font-size: 14px; /* Reduced font size */
+        font-size: 14px; 
     }
 }
+
+.hamburger-menu {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+    
+}
+.side-menu.active {
+    margin-top: 80px;
+    transform: translateX(0);
+}
+
