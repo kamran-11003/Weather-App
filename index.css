@@ -7,14 +7,14 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 }
-#toggleLabel{
+#toggleLabel {
     color: white;
     margin-top: 10px;
-    margin-left: 10px;;
+    margin-left: 10px;
 }
 
 .side-menu {
-    background-color: rgba(255, 255, 255, 0.4); 
+    background-color: rgba(160, 160, 160, 0.4); 
     width: 100px;
     padding: 20px;
     display: flex;
@@ -67,25 +67,49 @@ input {
     margin: 20px 0 10px 50px;
     width: 800px;
 }
-
 .weather-widget {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start; 
     border-radius: 10px;
     padding: 20px;
     margin: 20px 0 0 50px;
     width: 780px;
-    height: 100px;
+    background-color: rgba(160, 160, 160, 0.4);
     color: white;
-    background-color: rgba(255, 255, 255, 0.4);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     transition: background-color 0.5s;
 }
 
+.weather-info {
+    display: flex;
+    flex-direction: column; 
+    padding-right: 20px; 
+}
+
 .weather-icon img {
-    width: 200px;
-    height: 200px;
+    width: 100px; 
+    height: 100px; 
+}
+
+.weather-details {
+    display: flex;
+    flex-direction: column; 
+}
+
+.weather-info h2 {
+    font-size: 24px; 
+    margin: 0;
+}
+
+.weather-info p,
+.weather-details p {
+    margin: 5px 0; 
+    font-size: 16px; 
+}
+
+.weather-widget:hover {
+    background-color: rgba(160, 160, 160, 0.6);
 }
 
 .clear-sky { background-image: url('./clear sky.jpg'); }
@@ -94,16 +118,17 @@ input {
 .snow { background-image: url('./snow.jpg'); }
 .mist { background-image: url('./mist.jpg'); }
 
-
 .forecast-container {
     margin: 30px 0 0 50px;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(160, 160, 160, 0.4);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
-
+.forecast-container:hover {
+    background-color: rgba(160, 160, 160, 0.6);
+}
 #forecastTable, #forecast-Table {
     width: 100%;
     margin-top: 10px;
@@ -124,8 +149,8 @@ input {
 }
 
 .pagination .btn {
-    background-color: #3627dc; /* Button color */
-    color: white; /* Text color */
+    background-color: #3627dc; 
+    color: white; 
     border: none;
     padding: 8px 16px;
     margin: 4px;
@@ -135,8 +160,7 @@ input {
     padding: 10px 16px;
 }
 .pagination .btn:hover {
-        background-color: #2b1fad;
-   
+    background-color: #2b1fad;
 }
 
 .forecast-entry {
@@ -145,29 +169,29 @@ input {
     align-items: center;
 }
 button {
-    background-color: #3627dc; /* Button color */
-    color: white; /* Text color */
+    background-color: #3627dc; 
+    color: white; 
     border: none;
-    padding: 10px 16px; /* Adjust padding to make buttons look consistent */
+    padding: 10px 16px; 
     margin: 4px;
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 5px; 
     cursor: pointer;
-    font-size: 16px; /* Consistent font size */
+    font-size: 16px; 
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #2f22c6; /* Hover color */
+    background-color: #2f22c6; 
 }
 
 button:disabled {
-    background-color: #ccc; /* Disabled background color */
-    color: #666; /* Disabled text color */
-    cursor: not-allowed; /* Disabled cursor */
-    opacity: 0.6; /* Slight transparency */
+    background-color: #ccc; 
+    color: #666; 
+    cursor: not-allowed; 
+    opacity: 0.6; 
 }
-.toggle{
-    display:flex;
+.toggle {
+    display: flex;
 }
 
 .switch {
@@ -217,12 +241,15 @@ input:checked + .slider:before {
     margin: 70px 20px 20px;
     padding: 20px;
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(160, 160, 160, 0.4);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+.content-row:hover {
+    background-color: rgba(160, 160, 160, 0.6);
 }
 .pagination .btn:disabled {
     background-color: #ccc; 
@@ -238,9 +265,9 @@ input:checked + .slider:before {
         z-index: 1000;
         background-color: rgba(88, 86, 86, 0.8); 
     }
-    body{
+    body {
         flex-direction: column;
-        min-height: 200vh;
+        min-height: 250vh;
     }
     input {
         padding: 8px;
@@ -277,7 +304,6 @@ input:checked + .slider:before {
         width: 85%;
         font-size: 14px; 
     }
- 
 }
 
 .hamburger-menu {
@@ -295,10 +321,27 @@ input:checked + .slider:before {
     .hamburger-menu {
         display: block;
     }
-    
 }
+
 .side-menu.active {
     margin-top: 80px;
     transform: translateX(0);
 }
+@keyframes fadeOutIcon {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
+.weather-icon img {
+    width: 100px; 
+    height: 100px; 
+    transition: opacity 5s ease-in-out; 
+}
+
+.weather-icon.fade-out img {
+    animation: fadeOutIcon 5s forwards; 
+}

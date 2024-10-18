@@ -15,7 +15,12 @@ document.getElementById("unitToggle").addEventListener("change", function () {
     getWeather();
 });
 window.onload = function () {
+
     adjustEntriesPerPageForMobile();
+    const weatherIcon = document.querySelector('.weather-icon');
+
+        weatherIcon.classList.add('fade-out');
+  
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
             const lat = position.coords.latitude;
@@ -59,6 +64,7 @@ function fetchWeatherByLocation(lat, lon) {
         .then(response => response.json())
         .then(data => {
             if (data.cod === 200) {
+                console.log(data);
                 updateWeatherWidget(data);
                 city=data.name;
                 getForecast(lat, lon);
@@ -77,9 +83,20 @@ function updateWeatherWidget(data) {
     const weatherCondition = data.weather[0].description;
     const weatherMain = data.weather[0].main.toLowerCase();
     const iconCode = data.weather[0].icon;
+    const feelsLike = data.main.feels_like;
+
+    const pressure = data.main.pressure;
+    const humidity = data.main.humidity;
+    const visibility = data.visibility;
+    const windSpeed = data.wind.speed;
+
     document.getElementById('cityName').innerText = cityName;
     document.getElementById('temperature').innerText = `Temperature: ${temperature} ${unit}`;
     document.getElementById('weatherCondition').innerText = `Condition: ${weatherCondition}`;
+    document.getElementById('pressure').innerText = `Pressure: ${pressure} hPa`;
+document.getElementById('humidity').innerText = `Humidity: ${humidity} %`;
+document.getElementById('visibility').innerText = `Visibility: ${visibility} m`;
+document.getElementById('windSpeed').innerText = `Wind Speed: ${windSpeed} m/s`;
     const weatherIcon = document.getElementById('weatherIcon');
     weatherIcon.src = `https://openweathermap.org/img/wn/${iconCode}.png`;
     weatherIcon.alt = weatherCondition;
@@ -270,7 +287,6 @@ function previousPage() {
         displayForecast();
     }
 }
-// JavaScript to toggle the side menu on hamburger click
 const hamburgerMenu = document.getElementById('hamburgerMenu');
 const sideMenu = document.getElementById('sideMenu');
 
@@ -278,10 +294,10 @@ hamburgerMenu.addEventListener('click', () => {
     sideMenu.classList.toggle('active');
 });
 function adjustEntriesPerPageForMobile() {
-    if (window.innerWidth <= 768) { // Typical breakpoint for mobile devices
-        entriesPerPage = 1; // Set entries per page to 1 for mobile
+    if (window.innerWidth <= 768) { 
+        entriesPerPage = 1; 
     } else {
-        entriesPerPage = 6; // Default value for larger screens
+        entriesPerPage = 6; 
     }
 }
 window.addEventListener('resize', adjustEntriesPerPageForMobile);

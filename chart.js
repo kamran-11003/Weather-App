@@ -79,7 +79,7 @@ function renderCharts(temperatures, weatherPercentages, dates) {
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false, // Allow the chart to fill the canvas area
+            maintainAspectRatio: false, 
             animation: { duration: 2000 },
             scales: {
                 y: {
@@ -126,7 +126,7 @@ function renderCharts(temperatures, weatherPercentages, dates) {
         },
         options: { 
             responsive: true,
-            maintainAspectRatio: false, // Allow the chart to fill the canvas area
+            maintainAspectRatio: false, 
             animation: { duration: 2000 } 
         }
     });
@@ -146,7 +146,7 @@ function renderCharts(temperatures, weatherPercentages, dates) {
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false, // Allow the chart to fill the canvas area
+            maintainAspectRatio: false, 
             animation: { duration: 2000 },
             scales: {
                 y: {

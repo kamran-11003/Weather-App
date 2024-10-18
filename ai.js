@@ -38,7 +38,7 @@ async function sendMessageToGemini(message) {
                     {
                         parts: [
                             {
-                                text:storedData+ message
+                                text:storedData+"use this data if question is related to this else responce ignoring above data question:  "+message
                             }
                         ]
                     }
