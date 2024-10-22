@@ -125,6 +125,37 @@
                 padding: 8px 15px;
             }
         }
+        @media (max-width: 768px) {
+    .content {
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .current-temp {
+        font-size: 40px;
+    }
+
+    .current-temp,
+    .weather-details,
+    .weekly-forecast {
+        display: none;
+    }
+}
+
+    @media (max-width: 480px) {
+        .content, 
+        .current-temp, 
+        .weekly-forecast,
+        .weather-details {
+            display: none;
+        }
+
+        .button {
+            font-size: 14px;
+            padding: 8px 15px;
+        }
+    }
+
     </style>
 </head>
 <body>
